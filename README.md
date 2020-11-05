@@ -65,50 +65,41 @@ I have conducted a test of deviance to compare the core model and the final mode
 
 The area under the ROC curve of the final model was estimated to be 0.6076. Comparing this result with the final model in [1]. These two models are not too different from one another.
  
+ ![](fig2.PNG)
+ 
 The confusion matrix is also shown to check the classification error rate of each classes.
-Table 7: Confusion Matrix
 
-	Referenced
-	Late Readmission	Early Readmission	Class Error
+![](table7.PNG)
 
-
-Predicted	Late Readmission	11618
-	804
-	0.0647239
-	Early Readmission	8060
-	1090
-	0.8808743
-
-The result in the above table is very similar to the matrix of the final model generated in [1].    Classifying early readmission seem to come with a lot of prediction error.
+The result in the above table is very similar to the matrix of the final model generated in [1]. Classifying early readmission seem to come with a lot of prediction error.
 
 
 RANDOM FOREST MODEL
+
 Having fit a random forest model of readmitted with covariates (without HbA1c). The variable importance plot in suggest that gender and discharge disposition id are less important in our model. But the question remain – Is the gini index high enough for us to keep them in the           model? I think the gini index is close to 100 and if you would ask me, I would say we keep the two variables in the model.
- 
+
+![](fig3.PNG)
 
 The error rate of the final model is as shown below to include the number of trees
+
+![](fig4.PNG)
  
-Looking at the trees plot above, the green curve indicates the error rate for early readmission and the red curve represent the error rate for late readmission. While the black curve repres-ent the out of bag error rate. 
+Looking at the trees plot above, the green curve indicates the error rate for early readmission and the red curve represent the error rate for late readmission. While the black curve represent the out of bag error rate. 
 I saw the need to change the cut off (I made use of the mean probability of both prediction classes). Looking at the curve above, the error rate remains constant while the number of trees increases. We have reduced the number of trees to 200 in the next step and the resulting model is as shown below.
  
+ ![](fig5.PNG)
 
 The error rate in the early readmission class has significantly dropped while there is an increase in the error rate of both late readmission and out of bad error rate.
 In validating the above model, I have shown the confusion matrix and ROC curve below.
-Table 8: Confusion Matrix
 
-	Referenced
-	Late Readmission	Early Readmission	Class Error
+![](table8.PNG)
 
-
-Predicted	Late Readmission	14784
-	1334
-	0.0827646
-	Early Readmission	4894
-	560
-	0.8973231
 The have high sensitivity of 0.7513 and a low specificity of 0.2957. The accuracy of the model which shows how much right prediction is made in our model is 0.7113. This is quite reasonable because late readmission which happens to have a higher number of votes is well predicted.
 The AUC of the ROC curve is given by 0.5238. This model when compared to the model without HbA1c is not too different.
+
+![](fig6.PNG)
  
-Conclusion
+### Conclusion
+
 From the two model built above, the Logistic regression model does a better job than the random forest model. Also, the significance of HbA1c from both model is not quite pronounced. Comparing the AUC values in the random forest model, the models look alike in al respect. 
 Although the logistic regression suggest a slightly large p-value from the deviance test which suggest that HbA1c might not have a significant impact in the study of early readmission patients in the hospitals. 
