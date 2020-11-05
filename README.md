@@ -34,18 +34,8 @@ A summary of the model fit on the training data is as shown below:
 The resulting model was used for prediction on the test data set and the confusion matrix below was generated using a cut off value equivalent to the mean of probabilities of prediction.
 From the confusion matrix below, the model is doing a good job in classifying late readmission with a low class error rate of 6.49% on the other hand it is misclassifying an ample amount of early readmitted patients with a very high error rate of 88.1%.
 
-![](C:\Users\Adedolapo\Pictures/table1.png)
-Table 1: Confusion Matrix
+![](table1.png)
 
-	Referenced
-	Late Readmission	Early Readmission	Class Error
-
-Predicted	Late Readmission	11645
-	809
-	0.0649590
-	Early Readmission	8033
-	1085
-	0.8810046
 
 The ROC curve which shows the tradeoff between correctly predicted labels and that of the misclassified labels. We are mostly concerned about the area under the ROC curve. Below is the ROC of the model after prediction. The resulting area under the beneath ROC curve is given as 0.6129. However, it should be noted that the metrics used in quantifying AUC is between the ranges of 0.5 to 1.0. Therefore, it is not enough to say that our AUC of 0.6129 is a good value.
  
